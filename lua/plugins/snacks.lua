@@ -25,13 +25,13 @@ return {
     -- File
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     { "<leader>fe", function() Snacks.explorer() end, desc = "File Explorer" },
-    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-    { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-    { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+    { "<leader>ff", function() Snacks.picker.files({ layout = { preset = "ivy" } }) end, desc = "Find Files" },
+    { "<leader>fg", function() Snacks.picker.git_files({ layout = { preset = "ivy" } }) end, desc = "Find Git Files" },
+    { "<leader>fr", function() Snacks.picker.recent({ layout = { preset = "ivy" } }) end, desc = "Recent" },
     { "<leader>fR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 
     -- Git
-    { "<leader>gg", function() Snacks.lazygit() end,        desc = "Lazygit" },
+    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
@@ -62,13 +62,15 @@ return {
     { "<leader>sp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+    { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo" },
+    { "<leader>sT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
     { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
     { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
 
     -- Buffers
-    { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>bb", function() Snacks.picker.buffers({ layout = { preset = "ivy" } }) end, desc = "Buffers" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>bz", function() Snacks.zen() end,            desc = "Zen mode" },
     { "<leader>bZ",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
