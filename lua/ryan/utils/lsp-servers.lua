@@ -22,7 +22,7 @@ end
 
 local function get_attached_lsp_servers()
 	local current_buffer = vim.api.nvim_get_current_buf()
-	local clients = vim.lsp.buf_get_clients(current_buffer)
+  local clients = vim.lsp.get_clients({ bufnr = current_buffer })
 	local servers = {}
 
 	for _, client in pairs(clients) do
