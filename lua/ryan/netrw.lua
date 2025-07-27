@@ -18,5 +18,5 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_winsize = 100
 
 -- Keymaps
-vim.keymap.set("n", "<leader>e", toggle_netrw, { desc = "Toggle file explorer" })
+-- vim.keymap.set("n", "<leader>e", toggle_netrw, { desc = "Toggle file explorer" })
 
