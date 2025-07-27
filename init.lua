@@ -1,4 +1,5 @@
 require('ryan.settings')
 require('ryan.keymaps')
+require('ryan.plugins')
 require('ryan.colorscheme')
 require('ryan.netrw')
