@@ -1,6 +1,6 @@
 -- Color Settings
 vim.opt.background = "dark"             -- Use dark background
-vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("catppuccin")
 
 -- Terminal color handling
 if vim.env.TERM_PROGRAM == "Apple_Terminal" then
