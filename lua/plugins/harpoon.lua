@@ -9,10 +9,10 @@ return {
 
 		vim.keymap.set("n", "<leader>ba", function()
 			harpoon:list():add()
-		end)
+		end, { desc = "Harpoon buffer" })
 
 		vim.keymap.set("n", "<leader>.", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end)
+		end, { desc = "Harpoon" })
 	end,
 }
