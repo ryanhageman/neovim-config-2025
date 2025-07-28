@@ -1,54 +1,80 @@
-local function null_ls_servers()
-	local null_ls_s, null_ls = pcall(require, "null-ls")
-	local servers = {}
+local function get_conform_formatters()
+	local conform_ok, conform = pcall(require, "conform")
+	if not conform_ok then
+		return {}
+	end
 
-	if null_ls_s then
-		local sources = null_ls.get_sources()
-		local buf_ft = vim.bo.filetype
+	local buf_ft = vim.bo.filetype
+	local formatters = conform.list_formatters(0) -- 0 = current buffer
+	local formatter_names = {}
 
-		for _, source in ipairs(sources) do
-			if source._validated then
-				for ft_name, ft_active in pairs(source.filetypes) do
-					if ft_name == buf_ft and ft_active then
-						table.insert(servers, source.name)
-					end
-				end
-			end
+	for _, formatter in ipairs(formatters) do
+		if formatter.available then
+			table.insert(formatter_names, formatter.name)
 		end
 	end
 
-	return servers
+	return formatter_names
+end
+
+local function get_lint_linters()
+	local lint_ok, lint = pcall(require, "lint")
+	if not lint_ok then
+		return {}
+	end
+
+	local buf_ft = vim.bo.filetype
+	local linters = lint.linters_by_ft[buf_ft] or {}
+	local available_linters = {}
+
+	for _, linter_name in ipairs(linters) do
+		-- Check if linter is actually available (you could add more sophisticated checking here)
+		table.insert(available_linters, linter_name)
+	end
+
+	return available_linters
 end
 
 local function get_attached_lsp_servers()
 	local current_buffer = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients({ bufnr = current_buffer })
+	local clients = vim.lsp.get_clients({ bufnr = current_buffer })
 	local servers = {}
 
 	for _, client in pairs(clients) do
-		if client.name == "null-ls" then
-			local null_clients = null_ls_servers()
-
-			for _, null_client in pairs(null_clients) do
-				table.insert(servers, null_client)
-			end
-
-			goto continue
-		end
-
 		table.insert(servers, client.name)
-		::continue::
 	end
 
 	return servers
 end
 
 local function lsp_servers()
-	local server_list = get_attached_lsp_servers()
-	if #server_list <= 1 then
-		return table.concat(server_list, ", ")
+	local lsp_servers = get_attached_lsp_servers()
+	local formatters = get_conform_formatters()
+	local linters = get_lint_linters()
+
+	local all_tools = {}
+
+	-- Add LSP servers
+	for _, server in ipairs(lsp_servers) do
+		table.insert(all_tools, server)
+	end
+
+	-- Add formatters
+	for _, formatter in ipairs(formatters) do
+		table.insert(all_tools, formatter .. " (✨)")
+	end
+
+	-- Add linters
+	for _, linter in ipairs(linters) do
+		table.insert(all_tools, linter .. " (🔍)")
+	end
+
+	if #all_tools == 0 then
+		return "none"
+	elseif #all_tools == 1 then
+		return all_tools[1]
 	else
-		return "[" .. table.concat(server_list, ", ") .. "]"
+		return "[" .. table.concat(all_tools, ", ") .. "]"
 	end
 end
 
