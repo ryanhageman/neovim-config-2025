@@ -10,6 +10,7 @@ local mappings = {
 
 	-- ── Code ────────────────────────────────────────────────────────────
 	{ "<leader>c", group = "Code (LSP)", nowait = true, remap = false },
+	{ "<leader>ct", group = "Trouble", nowait = true, remap = false },
 
 	-- ── Files ───────────────────────────────────────────────────────────
 	{ "<leader>f", group = "File", nowait = true, remap = false },
