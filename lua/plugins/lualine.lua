@@ -11,6 +11,7 @@ return {
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
 				disabled_filetypes = {},
+        always_show_tabline = false
 			},
 
 			tabline = {
