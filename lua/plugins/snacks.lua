@@ -5,7 +5,7 @@ return {
 
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = require("ryan.utils.dashboard"),
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
