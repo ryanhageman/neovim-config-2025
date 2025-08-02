@@ -7,6 +7,7 @@ return {
 	ft = "markdown",
 	opts = {
 		legacy_commands = false,
+    disable_frontmatter = true,
 
 		workspaces = {
 			{
