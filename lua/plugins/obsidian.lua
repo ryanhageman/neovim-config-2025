@@ -7,7 +7,7 @@ return {
 	ft = "markdown",
 	opts = {
 		legacy_commands = false,
-    disable_frontmatter = true,
+		disable_frontmatter = true,
 
 		workspaces = {
 			{
@@ -29,6 +29,10 @@ return {
 			substitutions = {
 				date_title = utils.date_title,
 			},
+		},
+
+		completion = {
+			create_new = false,
 		},
 
 		note_id_func = function(title)
