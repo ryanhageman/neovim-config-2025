@@ -1,3 +1,36 @@
+-- -------------------------------------------------------------------
+-- Project Config - In .nvim.lua -------------------------------------
+-- -------------------------------------------------------------------
+
+-- -- Initialize unresolved wikilink index
+-- require("ryan.utils.wikilinks").init()
+
+-- -- Update index only when a file is saved
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   pattern = "*.md",
+--   callback = function(args)
+--     require("ryan.utils.wikilinks").update_file(args.file)
+--   end,
+-- })
+
+-- local cmp = require("cmp")
+-- cmp.register_source("obsidian_unresolved", require("ryan.cmp.obsidian_unresolved"))
+
+-- cmp.setup({
+--   sources = cmp.config.sources({
+--     { name = "obsidian_unresolved" },
+--     { name = "obsidian" },
+--     { name = "obsidian_tags" },
+--     { name = "obsidian_new" },
+--     { name = "nvim_lsp" },
+--     { name = "luasnip" },
+--     { name = "buffer" },
+--     { name = "path" },
+--   }),
+-- })
+
+-- -------------------------------------------------------------------
+
 local source = {}
 
 -- Only activate in markdown
