@@ -6,7 +6,7 @@ local settings = {
 		keys = {
       { icon = "🏄", key = "p", desc = "Projects", action = ":lua Snacks.picker.projects()" },
 			{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-			{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+			{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files({ hidden = true })" },
 			{
 				icon = " ",
 				key = "c",

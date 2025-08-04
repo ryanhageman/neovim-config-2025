@@ -14,12 +14,13 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
+		picker = { enabled = true, hidden = true, ignored = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
+		zen = { enabled = true, win = { width = 100 } },
 	},
 
   -- stylua: ignore
@@ -27,9 +28,9 @@ return {
     -- File
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     { "<leader>fe", function() Snacks.explorer() end, desc = "File Explorer" },
-    { "<leader>ff", function() Snacks.picker.files({ layout = { preset = "ivy" } }) end, desc = "Find Files" },
-    { "<leader>fg", function() Snacks.picker.git_files({ layout = { preset = "ivy" } }) end, desc = "Find Git Files" },
-    { "<leader>fr", function() Snacks.picker.recent({ layout = { preset = "ivy" } }) end, desc = "Recent" },
+    { "<leader>ff", function() Snacks.picker.files({ layout = { preset = "ivy" }, hidden = true }) end, desc = "Find Files" },
+    { "<leader>fg", function() Snacks.picker.git_files({ layout = { preset = "ivy" }, hidden = true  }) end, desc = "Find Git Files" },
+    { "<leader>fr", function() Snacks.picker.recent({ layout = { preset = "ivy" }, hidden = true  }) end, desc = "Recent" },
     { "<leader>fR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 
     -- Git
