@@ -41,18 +41,11 @@ vim.opt.matchtime = 2                  -- Highlight time
 vim.opt.signcolumn = "yes"             -- Show the sign column
 vim.opt.showmode = false               -- Don't show the mode in the command line
 
-
--- TODO: Ghostty keyprotocol support - troubleshoot later
--- if vim.env.TERM_PROGRAM == "ghostty" then
---   vim.opt.keyprotocol = "ghostty:kitty"
--- end
-
 -- Menus and completion
 vim.opt.wildmode = "longest:full,full" -- Longest match first, then cycle
 vim.opt.wildoptions = "pum"            -- Completions in a popup menu
 vim.opt.pumheight = 10                 -- Completion menu height
 vim.opt.completeopt = { "menuone", "noselect" }  -- Better completion behavior
-vim.opt.cmdheight = 2                  -- More space for displaying messages
 
 -- Window behavior
 vim.opt.title = true                   -- Show file in titlebar
