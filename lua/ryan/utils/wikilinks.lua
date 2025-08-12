@@ -35,9 +35,11 @@ end
 
 local function extract_links_from_lines(lines)
 	local links = {}
+
 	for _, line in ipairs(lines) do
 		for link in line:gmatch("%[%[([^%]|%]]+)") do
 			link = link:match("^[^|]+") -- strip off alias if present
+
 			table.insert(links, link)
 		end
 	end
