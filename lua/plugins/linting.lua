@@ -9,7 +9,7 @@ return {
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
-			ruby = { "rubocop" },
+			ruby = { "standardrb" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -20,5 +20,7 @@ return {
 				lint.try_lint()
 			end,
 		})
+
+    vim.diagnostic.config({ virtual_text = true })
 	end,
 }
