@@ -73,12 +73,15 @@ return {
     { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
 
     -- Buffers
-    { "<leader>bb", function() Snacks.picker.buffers({ layout = { preset = "ivy" } }) end, desc = "Buffers" },
-    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-    { "<leader>bz", function() Snacks.zen() end,            desc = "Zen mode" },
-    { "<leader>bZ",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
-    { "<leader>bs",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-    { "<leader>bS",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+    { "<leader>bb", function() Snacks.picker.buffers({
+      layout = { preset = "ivy" },
+      on_show = function() vim.cmd.stopinsert() end
+    }) end, desc = "Buffers" },
+    { "<leader>bd", function() Snacks.bufdelete() end,      desc = "Delete Buffer" },
+    { "<leader>bz", function() Snacks.zen.zoom() end,       desc = "Toggle Zoom" },
+    { "<leader>bZ", function() Snacks.zen() end,            desc = "Zen mode" },
+    { "<leader>bs", function() Snacks.scratch() end,        desc = "Toggle Scratch Buffer" },
+    { "<leader>bS", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 
     -- Dashboard
     { "<leader>x",  function() Snacks.dashboard() end,      desc = "Dashboard" },
