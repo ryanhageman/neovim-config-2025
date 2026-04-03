@@ -8,6 +8,7 @@ return {
 	opts = {
 		legacy_commands = false,
 		frontmatter = { enabled = false },
+		ui = { enable = false },
 
 		workspaces = {
 			{
@@ -16,7 +17,8 @@ return {
 			},
 		},
 
-		new_notes_location = "Fleeting Notes",
+		notes_subdir = "Fleeting Notes",
+		new_notes_location = "notes_subdir",
 
 		daily_notes = {
 			folder = "Daily Notes",
